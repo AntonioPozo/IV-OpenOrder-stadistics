@@ -14,25 +14,15 @@
 		</dd>
 	{% endmacro %}
 
-	<div>
-		<form method=post action="/registrate">
-			<dl>
-				{{ render_field(form.username) }}
-				{{ render_field(form.email) }}
-				{{ render_field(form.password) }}
-				{{ render_field(form.confirm) }}
-				{{ render_field(form.accept_tos) }}
-			</dl>
-			<p><input type=submit value=Registrarse>
-		</form>
-	</div>
-	<div>
-		<p>
-			<strong>Historial de páginas visitadas</strong><br>
-            1- {{ session.historial1 }}<br>
-            2- {{ session.historial2 }}<br>
-            3- {{ session.historial3 }}<br>
-	    </p>
-    </div>
+	<form method=post action="/registrate">
+		<dl>
+			{{ render_field(form.username) }}
+			{{ render_field(form.email) }}
+			{{ render_field(form.password) }}
+			{{ render_field(form.confirm) }}
+			{{ render_field(form.accept_tos) }}
+		</dl>
+		<p><input type=submit value=Registrarse>
+	</form>
 
 {% endblock %}

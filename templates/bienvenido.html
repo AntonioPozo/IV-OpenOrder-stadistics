@@ -17,10 +17,7 @@
         {% if session['username'] %}
             Estás identificado como <strong>{{session['username']}}</strong>.<br/>
             <form method=post action="/logout">
-                <input type=submit value=Salir>
-            </form>
-            <form method=post action="/modifica">
-                <input type=submit value=Modifica tus datos>
+                <p><input type=submit value=Salir></p>
             </form>
         {% else %}
         	No estás identificado
