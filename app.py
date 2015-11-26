@@ -3,12 +3,15 @@ from flask import Flask, render_template, request, redirect, url_for, escape, se
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 import shelve
 import sys
+import logging
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 app = Flask(__name__)
 
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 class RegistrationForm(Form):
 	username = TextField('Nombre de Usuario', [validators.Length(min=4, max=25)])
