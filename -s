@@ -1,7 +1,0 @@
-[2015-11-26 10:28:44 +0000] [5751] [INFO] Starting gunicorn 19.4.1
-[2015-11-26 10:28:44 +0000] [5751] [INFO] Listening at: http://0.0.0.0:5000 (5751)
-[2015-11-26 10:28:44 +0000] [5751] [INFO] Using worker: sync
-[2015-11-26 10:28:44 +0000] [5756] [INFO] Booting worker with pid: 5756
-[2015-11-26 10:29:58 +0000] [5756] [INFO] Worker exiting (pid: 5756)
-[2015-11-26 10:29:58 +0000] [5751] [INFO] Handling signal: term
-[2015-11-26 10:29:58 +0000] [5751] [INFO] Shutting down: Master
