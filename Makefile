@@ -12,7 +12,7 @@ install:
 	sudo pip install -r requirements.txt
 
 test: 
-	export DJANGO_SETTINGS_MODULE=plucoapp.settings && nosetests
+	cd test && python tests.py
 	
 run:
 	python app.py runserver 0.0.0.0:8000

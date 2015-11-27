@@ -117,9 +117,6 @@ def logout():
 	session.pop('username', None)
 	return redirect(url_for('login'))
 
-@app.route('/prueba', methods=['GET', 'POST'])
-def prueba():
-	return redirect(url_for('login'))
 
 
 @app.route('/registrate', methods=['GET', 'POST'])
