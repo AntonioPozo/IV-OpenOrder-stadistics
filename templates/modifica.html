@@ -1,5 +1,5 @@
 {% extends "bienvenido.html" %}
-{% block inscripcion%}
+{% block modifica%}
 
 	{% macro render_field(field) %}
 		<dt>{{ field.label }}
@@ -13,17 +13,15 @@
 		{% endif %}
 		</dd>
 	{% endmacro %}
-
 	<div>
-		<form method=post action="/registrate">
+		<form method=post action="/modifica">
 			<dl>
 				{{ render_field(form.username) }}
 				{{ render_field(form.email) }}
 				{{ render_field(form.password) }}
 				{{ render_field(form.confirm) }}
-				{{ render_field(form.accept_tos) }}
 			</dl>
-			<p><input type=submit value=Registrarse>
+			<p><input type=submit value=Modificar></p>
 		</form>
 	</div>
 	<div>
