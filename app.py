@@ -119,7 +119,7 @@ def logout():
 
 @app.route('/prueba', methods=['GET', 'POST'])
 def logout():
-	return redirect(url_for('index.html'))
+	return redirect(url_for('/'))
 
 
 @app.route('/registrate', methods=['GET', 'POST'])
