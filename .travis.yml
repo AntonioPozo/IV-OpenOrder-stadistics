@@ -11,12 +11,12 @@ install:   # Instalación de dependencias
   - sudo pip install --upgrade pip
   - sudo apt-get install 
   - sudo pip install Flask
-  #- pip install MySQL-python
-  #- pip install Django 
-  #- pip install nose  
+  - pip install MySQL-python
+  - pip install Django 
+  - pip install nose  
 
 script:       # El script que ejecutaremos para que nuestro código funcione y corra los test.
-  - make testbd
+  - make test
 
 branches:     # decidimos que TravisCI solo compruebe los test del master de github.
   - only:
