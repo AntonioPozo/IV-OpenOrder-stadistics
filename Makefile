@@ -8,6 +8,7 @@ install:
 	sudo apt-get install -y libmysqlclient-dev
 	sudo apt-get install -y python-dev
 	sudo apt-get install -y python-pip
+	sudo apt-get install -y pymongo
 	sudo pip install --upgrade pip
 	sudo pip install -r requirements.txt
 
@@ -26,9 +27,3 @@ heroku:
 	git push heroku master
 	heroku ps:scale web=1
 	heroku open
-
-docker:
-	sudo apt-get update
-	sudo apt-get install -y docker.io
-	sudo docker pull romilgildo/pluco
-	sudo docker run -t -i romilgildo/pluco /bin/bash

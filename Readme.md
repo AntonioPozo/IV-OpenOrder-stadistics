@@ -1,6 +1,6 @@
 #OpenOrder
-[![Build Status](https://travis-ci.org/AntonioPozo/Proyecto_IV-OpenOrder.svg?branch=master)](https://travis-ci.org/AntonioPozo/Proyecto_IV-OpenOrder)
-[![Heroku](https://www.herokucdn.com/deploy/button.png)](http://stadisticsopenorder.herokuapp.com)
+[![Build Status](https://travis-ci.org/AntonioPozo/Proyecto_IV-OpenOrder.svg?branch=master)](https://travis-ci.org/#)
+[![Heroku](https://www.herokucdn.com/deploy/button.png)](http://openorderstadistics.herokuapp.com)
 
 ###Integrantes del proyecto conjunto
 - Jose Ignacio Recuerda Cambil
@@ -28,61 +28,91 @@ Este proyecto se ha inscrito en el certamen de proyectos libres de la UGR.
 ##Herramienta de construcción: Makefile
 
 
+```
+clean:
+	rm -rf *~* && find . -name '*.pyc' -exec rm {} \;
+	
+install:
+	sudo apt-get update 
+	sudo apt-get install -y libmysqlclient-dev
+	sudo apt-get install -y python-dev
+	sudo apt-get install -y python-pip
+	sudo apt-get install -y pymongo
+	sudo pip install --upgrade pip
+	sudo pip install -r requirements.txt
+
+test: 
+	cd test && python tests.py
+	
+run:
+	python app.py runserver 0.0.0.0:8000
+	
+heroku:
+	wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh   # descargar herramienta heroku CLI
+	heroku login
+	heroku create
+	git add .
+	git commit -m "despliegue en heroku"
+	git push heroku master
+	heroku ps:scale web=1
+	heroku open
+```
+
+
+
 ##Sistema de pruebas
 
-Instalamos mocha con: npm install -g mocha. Creamos un directorio en el que vamos a alojar los tests, y dentro de este, el fichero test.js que tiene el siguiente contenido:
+Instalamos nose con: pip install nose
 
 ```
-var assert = require("assert");
-miweb = require(__dirname+"/../app.js");
-
-describe('Miweb', function(){
-    describe('Comentar', function(){
-        it('Debe cargar el programa', function(){
-            assert(miweb, "Cargado");
-        });
-    });
-});
+poner aqui el contenido del fichero de tests ejecutados con nosetest
 ```
 
-Ejecutamos mocha:
+Ejecutamos nosetest:
 
-![haciendo test](http://s2.subirimagenes.com/imagen/previo/thump_9485866test.png)
-
-**Nota:** en los [ejercicios del tema 2](https://github.com/AntonioPozo/IV-2015-16/blob/master/ejercicios/AntonioPozo/Tema2.md) se detalla el proceso de instalación de nvm. 
 
 Herramienta para ejecutar los test de forma automática. sólo tenemos que teclear make test:
 ![makefile](http://s2.subirimagenes.com/imagen/previo/thump_9486182makefile.png)
 
 
 ##Integración contínua
-Para la integración contínua he utilizado las herramientas que nos ofrece Microsot Azure para ello. A continuación una captura del sistema de integración contínua funcionando:
-
-![integración contínua azure](http://s2.subirimagenes.com/imagen/previo/thump_9485832imementacioncontinua.png)
+Para la integración contínua he utilizado [Travis](https://travis-ci.org). A continuación una captura del sistema de integración contínua funcionando:
 
 También se está haciendo uso de Travis. A continuación una captura del funcionamiento:
-![integración contínua travis](http://s2.subirimagenes.com/imagen/previo/thump_9485902travis.png)
-
-Éste sistema informa mediante correo electrónico el resultado de los test:
-
-![correo confirmación](http://s2.subirimagenes.com/imagen/previo/thump_9485904correo.png)
+![integración contínua travis](http://s2.subirimagenes.com/imagen/previo/thump_9493002traviscitestanddeoyy.png)
 
 
 
 ##Despliegue en un PaaS: Heroku
 
-Para el despliegue de la aplicación se va a usar HEROKU como PaaS (Platform as a Service), debido a su gran integración con GitHub y la facilidad de uso. Además permite el despliegue de aplicaciones de forma gratuita, a pesar de tener algunas restricciones, será suficiente para nuestro proyecto.
+Para el despliegue de la aplicación se va a usar HEROKU como PaaS (Platform as a Service), debido a su gran integración con GitHub. Además permite el despliegue de aplicaciones de forma gratuita, a pesar de tener algunas restricciones, será suficiente para nuestro proyecto. Estoy teniendo problemas con el acceso a la base de datos mongo.
 
 Añadimos al repositorio el fichero [Procfile](https://github.com/AntonioPozo/Proyecto_IV-OpenOrder/blob/master/Procfile)
 
 ```
-web: node.js
+web: gunicorn app:app --log-file=-
 
 ```
 y el fichero [requirements.txt](https://github.com/AntonioPozo/Proyecto_IV-OpenOrder/blob/master/requirements.txt)
 
 ```
-pip freeze > requirements.txt
+Flask==0.10.1
+gunicorn==19.4.1
+html5lib==0.999
+itsdangerous==0.24
+Jinja2==2.8
+MarkupSafe==0.23
+pyinotify==0.9.4
+pymongo==3.1.1
+pyOpenSSL==0.14
+requests==2.2.1
+six==1.5.2
+urllib3==1.7.1
+virtualenv==13.1.2
+Werkzeug==0.10.4
+WTForms==2.0.2
+wheel==0.24.0
+yolk==0.4.3
 
 ```
 En el repositorio del proyecto ejecutamos las siguientes órdenes:
@@ -91,5 +121,5 @@ En el repositorio del proyecto ejecutamos las siguientes órdenes:
 2.  git push heroku master
 3.  heroku ps:scale web=1
 4.  heroku open
-Con esto la aplicación queda desplegada en [Heroku](http://stadisticsopenorder.herokuapp.com)
+Con esto la aplicación queda desplegada en [Heroku](http://openorderstadistics.herokuapp.com)
 
