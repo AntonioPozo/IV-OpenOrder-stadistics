@@ -57,13 +57,13 @@ class LoginForm(Form):
 
 
 def addUser(nombre, email, passwd):
-	mongoClient = MongoClient('localhost',27017)
+	mongoClient = MongoClient('159.147.249.65',27017)
 	db = mongoClient.UsuariosDAI
 	collection = db.UsuariosDAI
 	collection.insert({'nombre' : nombre, 'email' : email, 'pass' : passwd})
 	
 def modifyUser(newname, newemail, newpasswd):
-	mongoClient = MongoClient('localhost',27017)
+	mongoClient = MongoClient('159.147.249.65',27017)
 	db = mongoClient.UsuariosDAI
 	collection = db.UsuariosDAI
 	users = collection.find()
@@ -84,7 +84,7 @@ def modifyUser(newname, newemail, newpasswd):
 # 	return False;
 
 def testSingin(nombre, passwd):
-	mongoClient = MongoClient('localhost',27017)
+	mongoClient = MongoClient('159.147.249.65',27017)
 	db = mongoClient.UsuariosDAI
 	collection = db.UsuariosDAI
 	user = collection.find({"nombre" : nombre, "pass": passwd})
