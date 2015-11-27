@@ -118,7 +118,7 @@ def logout():
 	return redirect(url_for('login'))
 
 @app.route('/prueba', methods=['GET', 'POST'])
-def logout():
+def prueba():
 	return redirect(url_for('login'))
 
 
