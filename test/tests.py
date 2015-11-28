@@ -13,29 +13,55 @@
 
 
 
-
-
-
-
-
 import unittest
-import os
-# import webGestion
-from HTMLParser import HTMLParser
-import tempfile
-from html5lib.sanitizer import HTMLSanitizerMixin
+import app
+from flask import Flask, render_template
 
-eti_html = 0
-img = 0
+def fun(x):
+    return x + 1
 
-class ComprobarEtiquetas(HTMLParser):
-    def handle_starttag(self, tag, attrs):
-		global eti_html
-		global img
-		if tag=='html':
-			eti_html = 1
-		if tag=='img':
-			img = 1
+class TestCode(unittest.TestCase):
+    def test_code(self):
+        self.test_app = app.test_client()
+        
+        #Test demo
+        self.assertEqual(fun(3), 4)
+
+        #Test Response is 200 OK
+        #response = self.test_app.get('/register', follow_redirects=True)
+        #self.assertEqual(response.status, "200 OK")
+
+        # Test logging out
+        logout = self.test_app.get('/logout', follow_redirects=True)
+        #assert 'You were logged out' in logout.data
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+
+
+
+
+
+# import unittest
+# import os
+# # import webGestion
+# from HTMLParser import HTMLParser
+# import tempfile
+# from html5lib.sanitizer import HTMLSanitizerMixin
+
+# eti_html = 0
+# img = 0
+
+# class ComprobarEtiquetas(HTMLParser):
+#     def handle_starttag(self, tag, attrs):
+# 		global eti_html
+# 		global img
+# 		if tag=='html':
+# 			eti_html = 1
+# 		if tag=='img':
+# 			img = 1
 	
 # class TestMethods(unittest.TestCase):
 # 	def setUp(self):
