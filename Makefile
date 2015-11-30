@@ -14,7 +14,7 @@ install:
 	sudo pip install -r requirements.txt
 
 test: 
-	cd test && python tests.py
+	python -m unittest test
 	
 run:
 	python app.py runserver 0.0.0.0:8000
