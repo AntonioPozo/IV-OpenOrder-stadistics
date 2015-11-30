@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request, redirect, url_for, escape, session, flash
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from pymongo import MongoClient
+import MySQLdb
 
 import sys
 
@@ -143,6 +144,38 @@ def modifica():
 	return render_template('modifica.html', form=form)
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+
+
+
+
+# acceder a base de datos mysql por probar a ver
+@app.route('/mysql', methods=['GET', 'POST'])
+def mysql():
+	DB_HOST = '127.12.129.2:3306/'
+	DB_USER = 'adminwWZSrYR' 
+	DB_PASS = 'rKA7ljUDPr5h' 
+	DB_NAME = 'openorderstadistics' 
+
+	datos = [DB_HOST, DB_USER, DB_PASS, DB_NAME] 
+ 
+	conn = MySQLdb.connect(*datos) # Conectar a la base de datos 
+	cursor = conn.cursor()         # Crear un cursor 
+	query = "SELECT * FROM estadisticas"
+	cursor.execute(query)          # Ejecutar una consulta 
+
+	data = cursor.fetchall()   # Traer los resultados de un select
+	conn.commit()              # Hacer efectiva la escritura de datos 
+
+	cursor.close()                 # Cerrar el cursor 
+	conn.close()                   # Cerrar la conexión 
+ 
+	return data
+	
+
+
+
+
+
 
 
 if __name__ == '__main__':
