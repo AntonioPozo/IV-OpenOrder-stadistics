@@ -1,5 +1,5 @@
 import unittest
-import app
+
 
 def fun(x):
     return x + 1
