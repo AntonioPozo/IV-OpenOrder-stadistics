@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request, redirect, url_for, escape, session, flash
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from pymongo import MongoClient
-import MySQLdb
+# import MySQLdb
 
 import sys
 
