@@ -151,7 +151,7 @@ app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 # acceder a base de datos mysql por probar a ver
 @app.route('/mysql', methods=['GET', 'POST'])
 def mysql():
-	DB_HOST = 'mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/'
+	DB_HOST = '127.12.129.2:3306/'
 	DB_USER = 'adminwWZSrYR' 
 	DB_PASS = 'rKA7ljUDPr5h' 
 	DB_NAME = 'openorderstadistics' 
