@@ -21,14 +21,18 @@ RUN sudo apt-get -y install build-essential
 RUN sudo apt-get -y install python-psycopg2
 RUN sudo apt-get -y install libpq-dev
 RUN sudo apt-get -y install python2.7
-RUN sudo easy_install pip
+
 RUN sudo easy_install Pillow
 RUN sudo pip install --upgrade pip
 
 RUN sudo easy_install pip
-RUN cd IV-OpenOrder-stadistics
-RUN sudo pip install -r requirements.txt
-RUN cd ..
+RUN sudo pip install Flask
+RUN sudo pip install virtualenv
+RUN sudo pip install gunicorn
+RUN sudo pip install WTForms
+RUN sudo pip install pynotify
+RUN sudo pip install pymongo
+RUN sudo pip install Werkzeug
 
 #Instalar requerimientos necesarios
 RUN cd IV-OpenOrder-stadistics && git pull
