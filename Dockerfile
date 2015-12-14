@@ -9,6 +9,7 @@ RUN sudo apt-get -y update
 #Instalar git y herramientas necesarias
 
 RUN pip install -r requirements.txt
+RUN sudo apt-get install -y git
 
 #Clonar repositorio
 RUN sudo git clone https://github.com/AntonioPozo/IV-OpenOrder-stadistics.git
