@@ -3,20 +3,19 @@ FROM ubuntu:latest
 #Autor
 MAINTAINER Antonio Miguel Pozo Cámara <antoniopozo26@gmail.com> 
 
-#Actualizar sistema
+#Actualizar los repositorios
 RUN sudo apt-get -y update
 
-RUN apt-get install -y git  #Primero de todo instalamos git
-RUN cd /home && git clone https://github.com/AntonioPozo/IV-OpenOrder-stadistics.git
+#Instalar la herramienta GIT
+RUN sudo apt-get install -y git
 
+#Descargamos el proyecto
+RUN sudo git clone https://github.com/AntonioPozo/IV-OpenOrder-stadistics.git
+
+#Instalamos python3
 RUN sudo apt-get -y install python2.7
-RUN sudo apt-get -y install python-psycopg2
-RUN sudo apt-get -y install build-essential
+RUN sudo easy_install3 pip
+RUN sudo pip install --upgrade pip
 
-#Instalar requerimientos necesarios
-RUN cd IV-OpenOrder-stadistics && git pull
-RUN cd IV-OpenOrder-stadistics && make install
-
-
-CMD cd /home/ && python app.py
-
+#Instalar las dependencias
+RUN cd IV-OpenOrder-stadistics && pip install -r requirements.txt
