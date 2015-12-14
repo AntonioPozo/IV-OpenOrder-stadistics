@@ -21,10 +21,10 @@ RUN sudo apt-get -y install build-essential
 RUN sudo apt-get -y install python-psycopg2
 RUN sudo apt-get -y install libpq-dev
 RUN sudo apt-get -y install python2.7
-RUN sudo apt-get -y install pymongo
 RUN sudo easy_install pip
 RUN sudo easy_install Pillow
 RUN sudo pip install --upgrade pip
+RUN sudo pip install pymongo
 
 #Clonar repositorio
 RUN sudo git clone https://github.com/AntonioPozo/IV-OpenOrder-stadistics.git
