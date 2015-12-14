@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu
 
 #Autor
 MAINTAINER Antonio Miguel Pozo Cámara <antoniopozo26@gmail.com> 
@@ -12,7 +12,7 @@ RUN sudo apt-get install -y git
 #Descargamos el proyecto
 RUN sudo git clone https://github.com/AntonioPozo/IV-OpenOrder-stadistics.git
 
-#Instalamos python3
+#Instalamos paquetes
 RUN sudo apt-get install -y python-setuptools
 RUN sudo apt-get -y build-dep python-imaging --fix-missing
 RUN sudo apt-get -y install libffi-dev
