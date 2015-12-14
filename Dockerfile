@@ -23,7 +23,6 @@ RUN sudo apt-get -y install libpq-dev
 RUN sudo apt-get -y install python2.7
 
 RUN sudo easy_install Pillow
-RUN sudo pip install --upgrade pip
 
 RUN sudo easy_install pip
 RUN sudo pip install Flask
