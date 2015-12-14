@@ -31,6 +31,6 @@ heroku:
 
 docker:
 	sudo apt-get update
-    sudo curl -sSL https://get.docker.com/ | sudo sh
-    sudo docker pull apozo/iv-openorder-stadistics
-    sudo docker run -t -i apozo/iv-openorder-stadistics /bin/bash
+	sudo curl -sSL https://get.docker.com/ | sudo sh
+	sudo docker pull apozo/iv-openorder-stadistics
+	sudo docker run -t -i apozo/iv-openorder-stadistics /bin/bash
