@@ -26,7 +26,9 @@ RUN sudo easy_install Pillow
 RUN sudo pip install --upgrade pip
 
 RUN sudo easy_install pip
+RUN cd IV-OpenOrder-stadistics
 RUN sudo pip install -r requirements.txt
+RUN cd ..
 
 #Instalar requerimientos necesarios
 RUN cd IV-OpenOrder-stadistics && git pull
