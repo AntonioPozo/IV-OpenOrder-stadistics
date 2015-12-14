@@ -12,6 +12,7 @@ RUN sudo apt-get -y update
 #RUN sudo apt-get install -y python-setuptools
 #RUN sudo apt-get -y install libpq-dev
 
+RUN sudo apt-get install -y git
 RUN sudo apt-get install -y python-setuptools
 RUN sudo apt-get -y build-dep python-imaging --fix-missing
 RUN sudo apt-get -y install libffi-dev
