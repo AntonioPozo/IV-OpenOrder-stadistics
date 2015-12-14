@@ -28,35 +28,10 @@ Este proyecto se ha inscrito en el certamen de proyectos libres de la UGR.
 ##Herramienta de construcción: Makefile
 
 
-```
-clean:
-	rm -rf *~* && find . -name '*.pyc' -exec rm {} \;
-	
-install:
-	sudo apt-get update 
-	sudo apt-get install -y libmysqlclient-dev
-	sudo apt-get install -y python-dev
-	sudo apt-get install -y python-pip
-	sudo apt-get install -y pymongo
-	sudo pip install --upgrade pip
-	sudo pip install -r requirements.txt
 
-test: 
-	python -m unittest test
-	
-run:
-	python app.py runserver 0.0.0.0:8000
-	
-heroku:
-	wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh   # descargar herramienta heroku CLI
-	heroku login
-	heroku create
-	git add .
-	git commit -m "despliegue en heroku"
-	git push heroku master
-	heroku ps:scale web=1
-	heroku open
-```
+Para ver el contenido del Makefile pulse [aqui](https://github.com/AntonioPozo/IV-OpenOrder-stadistics/blob/master/Makefile)
+
+
 
 
 
@@ -168,4 +143,26 @@ En el repositorio del proyecto ejecutamos las siguientes órdenes:
 Con esto la aplicación queda desplegada en [Heroku](http://openorderstadistics.herokuapp.com)
 
 **NOTA: Estoy teniendo bastantes problemas a la hora de desplegar la base de datos tanto en Heroku como en Openshift. De ahí la simpleza de los test. Cuando consiga enlazar se cambiarán los test.**
+
+
+##Entorno de Pruebas: Docker
+Docker implementa una API de alto nivel para proporcionar contenedores livianos que ejecutan procesos de manera aislada. Vamos a utilizar Docker para dicho propósito.
+
+El proceso de registro en la web y el de enlace entre DockerHub y Github se puede seguir [aquí](https://docs.docker.com/docker-hub/builds/).
+Una vez hemos completado el tutorial del enlace anterior, tenemos nuestro proyecto en DockerHub.
+Necesitamos editar el archivo [Dockerfile](https://github.com/AntonioPozo/IV-OpenOrder-stadistics/blob/master/Dockerfile), que es el que tendrá la configuración para DockerHub
+
+La siguiente captura certifica que la aplicación está funcionando en el entorno de pruebas:
+![](http://s2.subirimagenes.com/imagen/previo/thump_9496668desegada.png)
+
+
+Puede encontrar el proyecto en el entorno de pruebas [aquí](https://hub.docker.com/r/apozo/iv-openorder-stadistics/)
+
+Se han añadido el conjunto de reglas para Docker, para ejecutarlas hacer:
+
+```
+make docker
+```
+
+
 
